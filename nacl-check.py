@@ -80,6 +80,11 @@ def process_filter(type:str,filter:str,url:str):
         case "domain":
             if f"://{filter}/" in url:
                 return True
+            pattern = re.compile(f"\:\/\/{filter}")
+            if pattern.match(url):
+                return True
+            if url == filter:
+                return True
         #Filter mismatch
         case _:
             print("Unknown Filter type")
