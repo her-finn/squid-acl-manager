@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Contentgroups</h2>
+<a href="{{ url_for('add_contentgroup') }}" class="btn btn-primary mb-3">Add Contentgroup</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Filter</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contentgroup in contentgroups %}
+        <tr>
+            <td>{{ contentgroup.type }}</td>
+            <td>{{ contentgroup.filter }}</td>
+            <td>{{ contentgroup.comment }}</td>
+            <td>
+                <form action="{{ url_for('delete_contentgroup', id=contentgroup.id) }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

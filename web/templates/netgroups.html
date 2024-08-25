@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Netgroups</h2>
+<a href="{{ url_for('add_netgroup') }}" class="btn btn-primary mb-3">Add Netgroup</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Subnet</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for netgroup in netgroups %}
+        <tr>
+            <td>{{ netgroup.subnet }}</td>
+            <td>{{ netgroup.comment }}</td>
+            <td>
+                <form action="{{ url_for('delete_netgroup', id=netgroup.id) }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
