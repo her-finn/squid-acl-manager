@@ -1,4 +1,31 @@
-# NACL - a Simple Squid ACL Manager
+```
+    oooo   oooo     o       oooooooo8 ooooo       
+    8888o  88     888    o888     88  888        
+    88 888o88    8  88   888          888        
+    88   8888   8oooo88  888o     oo  888      o 
+    o88o    88 o88o  o888o 888oooo88  o888ooooo88
+        
+            Squid Network ACL Control          
+            Author: github.com/her-finn 
+```
+# About
+NACL (*Network ACL Manager*) is a tool that is designed to easily manage squid ACLs. The focus is on ensuring that servers only get access to the URIs that they need.
+
+The heart of the system is the Squid proxy, which receives all requests and forwards them to the NACL processor.
+This processor looks for the guidelines that match the device and then accepts or rejects the connection if necessary.
+
+You can define in so-called content groups which URIs can be accessed and then link them to individually created network objects.
+
+__There are these 3 filter options:__
+- __Strict__: Only the specified URI (such as: https://contoso.com/list.txt) can be accessed
+- __Domain__: All URIs that are based on a specific domain (e.g. contoso.com) can be accessed
+- __Regex__: Build your own filters and release several URIs at once
+
+![Netgroups](images/netgroups.png "NACL Network-Objects")
+![Contentgroups](images/contentgroups.png "NACL URI-Filter Objects")
+![Mappings](images/mappings.png "Network-Objects mapped to URI-Filters")
+
+# Installation
 ## Requirements
 - Debian 12 Server (or any other Server where Python3 and Squid can be installed on)
 - Squid installed
