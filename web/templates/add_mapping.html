@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Mapping</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="netgroup">Netgroup</label>
+        <select class="form-control" id="netgroup" name="netgroup">
+            {% for ng in netgroups %}
+            <option value="{{ ng.id }}">{{ ng.subnet }} - {{ng.comment}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group mt-3">
+        <label for="contentgroup">Contentgroup</label>
+        <select class="form-control" id="contentgroup" name="contentgroup">
+            {% for cg in contentgroups %}
+            <option value="{{ cg.id }}">{{ cg.type }} - {{ cg.filter }} ({{cg.comment}})</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Add Mapping</button>
+</form>
+{% endblock %}

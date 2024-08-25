@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Contentgroup</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="type">Type</label>
+        <select class="form-control" id="type" name="type">
+            <option value="Strict">Strict</option>
+            <option value="Domain">Domain</option>
+            <option value="regex">Regex</option>
+        </select>
+    </div>
+    <div class="form-group mt-3">
+        <label for="filter">Filter</label>
+        <input type="text" class="form-control" id="filter" name="filter" required>
+    </div>
+    <div class="form-group mt-3">
+        <label for="comment">Comment</label>
+        <input type="text" class="form-control" id="comment" name="comment">
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Add Contentgroup</button>
+</form>
+{% endblock %}

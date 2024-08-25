@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Mappings</h2>
+<a href="{{ url_for('add_mapping') }}" class="btn btn-primary mb-3">Add Mapping</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Subnet</th>
+            <th>Subnet-Comment</th>
+            <th>Filter-Comment</th>
+            <th>Filter Type</th>
+            <th>Filter</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mapping in mappings %}
+        <tr>
+            <td>{{ mapping.subnet }}</td>
+            <td>{{ mapping.ncomment }}</td>
+            <td>{{ mapping.ccomment }}</td>
+            <td>{{ mapping.type }}</td>
+            <td>{{ mapping.filter }}</td>
+            <td>
+                <form action="{{ url_for('delete_mapping', netgroup=mapping.netgroup, contentgroup=mapping.contentgroup) }}" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
