@@ -83,6 +83,9 @@ def process_filter(type:str,filter:str,url:str):
             pattern = re.compile(f"\:\/\/{filter}")
             if pattern.match(url):
                 return True
+            pattern = re.compile(f"{filter}:(80|443)")
+            if pattern.match(url):
+                return True
             if url == filter:
                 return True
         #Filter mismatch
