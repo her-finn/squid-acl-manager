@@ -1,0 +1,11 @@
+[Unit]
+Description=NACL Manager Web Service
+After=network.target
+
+[Service]
+WorkingDirectory=/nacl
+ExecStart=/usr/bin/python3 /nacl/web/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
